@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .cold{
+        border: solid aqua;
+    }
+</style>
+<body>
+        <h1>Listas</h1>
+      
+        <p id="lista-titulo" name="lista">Minhas listas:</p>
+      
+        <ul class="lista-itens-1">
+          <li id="one" class="hot">item a</li>
+          <li id="two" class="hot">item b</li>
+          <li id="three" class="hot">item c</li>
+          <li id="four">item d</li>
+        </ul>
+      
+        <ul class="lista-itens-2">
+          <li id="one" class="hot">item a</li>
+          <li id="two" class="hot">item b</li>
+          <li id="three" class="hot">item c</li>
+          <li id="four">item d</li>
+        </ul>
+      
+        <ul class="lista-itens-3">
+          <li id="one" class="hot">item a</li>
+          <li id="two" class="hot">item b</li>
+          <li id="three" class="hot">item c</li>
+          <li id="four">item d</li>
+        </ul>
+      
+        <ul class="lista-itens-4">
+          <li id="one" class="hot">item a</li>
+          <li id="two" class="hot">item b</li>
+          <li id="three" class="hot">item c</li>
+          <li id="four">item d</li>
+        </ul>
+</body>
+<script>
+    let listas = document.querySelector('.lista-itens-2')
+                         .querySelectorAll('li[id]');
+    console.log(listas)
+
+    for(i=0; i<listas.length;i++){
+        listas[i].setAttribute('style','background-color:purple')
+        listas[i].classList.remove('hot');
+        listas[i].classList.add('cold');
+    }
+
+</script>
+
+</html>
