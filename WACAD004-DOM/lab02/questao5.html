@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>To-do</h1>
+
+  <div>
+    <p id="lista-titulo" name="lista">Lista de atividades:</p>
+  </div>
+
+  <div id="input">
+    <input placeholder="Digite aqui o item" id="item"/>
+    <button id="add">Adicionar</button>
+  </div>
+
+  <ul id="lista-itens">
+    <li>item a</li>
+  </ul>
+
+  <div>
+    <button id="remover">Remover último item</button>
+  </div>
+</body>
+
+<script>
+  let add = document.getElementById('add');
+  add.addEventListener('click', Adicionar);
+
+  let remove = document.getElementById('remover');
+  remove.addEventListener('click', Remover)
+
+  function Adicionar(){
+    let input = document.getElementById('item');
+    let valor = input.value;
+    if(valor != ''){
+
+      let newValue = document.createTextNode(valor);
+      let li = document.createElement('li');
+      li.appendChild(newValue);
+   
+      let lista = document.getElementById('lista-itens');
+      lista.appendChild(li);
+
+      document.getElementById('item').value = '';
+    } else {
+      alert("Campo vazio! Insira um texto");
+    }
+  }
+
+  function Remover(){
+    
+    let lista = document.getElementById('lista-itens');
+    console.log(lista.children.length);
+
+    if(lista.children.length == 1) {
+      alert("A lista não pode ficar vazia!")
+    } else{
+      lista.removeChild(lista.lastElementChild)
+      console.log(lista.children);
+    }
+}
+
+
+</script>
+
+</html>
+
