@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista</h1>
+
+  <div>
+    <p id="lista-titulo" name="lista">Meus itens:</p>
+  </div>
+
+  <ul id="lista-itens-1">
+    <li id="one" class="hot">item a</li>
+    <li id="two" class="hot">item b</li>
+    <li id="three" class="hot">item c</li>
+    <li id="four">item d</li>
+  </ul>
+</body>
+<script>
+    
+    let firstItem = document.getElementById('lista-itens-1');
+    let first = firstItem.firstElementChild;
+    let last = firstItem.lastElementChild;
+    let dad = firstItem.parentNode;
+    let allChilds = firstItem.childNodes;
+    
+    let two = document.getElementById('two')
+    
+    let bro = two.nextSibling
+
+
+    console.log("3.i Primeiro filho: ", first)
+    console.log("3.i Último filho: ", last)
+    console.log("3.ii Elemento pai: ", dad)
+    console.log("3.iii Todos os filhos HTML: ", allChilds)
+    console.log("3.iv Irmãos: ", bro)
+
+</script>
+</html>
