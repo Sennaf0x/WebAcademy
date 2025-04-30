@@ -1,36 +1,58 @@
 <body>
-    ...
-    <div class="elementor elementor-38" data-elementor-post-type="page">
-        ...
-        <div class="elementor-element elementor-element-68ba9a9 e-con-full e-flex e-con e-parent e-lazyloaded">
-            ...
-            <div class="elementor-element elementor-element-0a8c52a e-con-full e-flex e-con e-child" data-id="0a8c52a" data-element_type="container">
-                <div class="elementor-element elementor-element-03217cc elementor-widget__width-inherit elementor-widget elementor-widget-shortcode" data-id="03217cc" data-element_type="widget" data-widget_type="shortcode.default">
-                    <div class="elementor-widget-container">
-                        <div class="elementor-shortcode">
-                            <div class="e-n-carousel swiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide" data-slide="1">
-                                        <div class="elementor-element elementor-element-b7a1e27 e-con-full animated-fast e-flex e-con e-child animated zoomInDown">
-                                            <div class="elementor-element elementor-element-e7c65c0 animated-slow elementor-widget elementor-widget-text-editor animated fadeInUp">
-                                                <div class="elementor-widget-container">
-                                                    <p>Bem-vindo a FPFtech</p>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-element elementor-element-c8d44e2 elementor-widget__width-initial animated-slow elementor-widget elementor-widget-heading animated fadeInUp">
-                                                <div class="elementor-widget-container">
-                                                    <h2 class="elementor-heading-title elementor-size-default">Transformando conhecimento em inovação</h2>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            ...
-        </div>
-    </div>
-</body>
+    <h1>Listas</h1>
+  
+    <p id="lista-titulo" name="lista">Minhas listas:</p>
+  
+    <ul class="lista-itens-1">
+      <li id="one" class="hot">item a</li>
+      <li id="two" class="hot">item b</li>
+      <li id="three" class="hot">item c</li>
+      <li id="four">item d</li>
+    </ul>
+  
+    <ul class="lista-itens-2">
+      <li id="one" class="hot">item a</li>
+      <li id="two" class="hot">item b</li>
+      <li id="three" class="hot">item c</li>
+      <li id="four">item d</li>
+    </ul>
+  
+    <ul class="lista-itens-3">
+      <li id="one" class="hot">item a</li>
+      <li id="two" class="hot">item b</li>
+      <li id="three" class="hot">item c</li>
+      <li id="four">item d</li>
+    </ul>
+  
+    <ul class="lista-itens-4">
+      <li id="one" class="hot">item a</li>
+      <li id="two" class="hot">item b</li>
+      <li id="three" class="hot">item c</li>
+      <li id="four">item d</li>
+    </ul>
+    <script>
+        let listas = document
+        .querySelector('.lista-itens-2')
+        .querySelectorAll('li')
+        
+        console.log(listas)
+        console.log("Itens da lista-itens-2: ")
+        
+        for (i=0; i<listas.length; i++){
+            console.log(listas[i].textContent)
+        }
+        
+        console.log("Lista dos itens da lista-itens-2 que possuem a classe hot: ");
+        
+        let lista2 = document
+        .querySelector('.lista-itens-2')
+        .getElementsByClassName('hot')
+        
+        console.log(lista2);
+        
+        for (j=0; j<lista2.length; j++){
+            console.log(lista2[j].textContent)
+        }
+
+    </script>
+  </body>
