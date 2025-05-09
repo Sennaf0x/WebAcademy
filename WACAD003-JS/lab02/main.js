@@ -4,12 +4,12 @@
  const btn = document.querySelector('.dark');
 
  for (let i = 1; i <= 5; i++) {
-     const newImage = document.createElement('img');
-     newImage.setAttribute('src', `images/pic${i}.jpg`);
-     newImage.addEventListener('click', function() {
-         displayImage(newImage.getAttribute('src'));
+     const novaImagem = document.createElement('img');
+     novaImagem.setAttribute('src', `images/pic${i}.jpg`);
+     novaImagem.addEventListener('click', function() {
+         displayImage(novaImagem.getAttribute('src'));
      });
-     thumbBar.appendChild(newImage);
+     thumbBar.appendChild(novaImagem);
  }
 
  function displayImage(src) {
