@@ -1,0 +1,5 @@
+ES Modules (ou ESM) é um sistema de módulos introduzido na especificação ECMAScript 6 (ES6), 
+que define uma forma padrão de modularização do código JavaScript. 
+Ele permite a divisão de código em módulos reutilizáveis que podem ser facilmente importados e exportados entre diferentes arquivos. 
+Essa abordagem é nativa ao JavaScript e é suportada por navegadores modernos e pela plataforma Node.js, 
+começando pela versão 12.

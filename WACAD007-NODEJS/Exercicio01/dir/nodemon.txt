@@ -1,0 +1,1 @@
+Nodemon é uma ferramenta que ajuda no processo de desenvolvimento em aplicações Node.js. Ele é utilizado para facilitar o desenvolvimento ao monitorar alterações no seu código-fonte e reiniciar automaticamente o servidor sempre que uma modificação for detectada.

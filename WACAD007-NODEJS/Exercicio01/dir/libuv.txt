@@ -1,0 +1,3 @@
+Libuv é uma biblioteca de código aberto que fornece uma camada de abstração que permite ao Node.js 
+lidar com operações assíncronas e I/O de forma eficiente. 
+É um núcleo fundamental do Node.js e cuida de várias operações

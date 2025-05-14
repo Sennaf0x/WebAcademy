@@ -1,0 +1,1 @@
+CommonJS é um sistema de módulos amplamente utilizado no ambiente de execução JavaScript, especialmente no Node.js. O objetivo do CommonJS é fornecer um padrão para a definição de módulos que permitem a encapsulação do código, reutilização e a organização do mesmo em aplicações.

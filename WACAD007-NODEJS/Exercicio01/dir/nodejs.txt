@@ -1,0 +1,1 @@
+Node.js é um ambiente de execução JavaScript do lado do servidor construído sobre o motor V8 do Google Chrome.
