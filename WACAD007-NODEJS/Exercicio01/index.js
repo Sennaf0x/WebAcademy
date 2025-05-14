@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const dotenv = require("dotenv");
-const { createLink } = require('./link');
+const { createLink } = require('./link.js');
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` })
 
