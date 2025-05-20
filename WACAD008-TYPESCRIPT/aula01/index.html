@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lembretes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="container" class="container">
+        <h1 id="topo">Lembretes</h1>
+        <input type="text" id="title" placeholder="Título" />
+        <label for="data"> Data de criação</label>
+        <input type="date" id="dueDate" placeholder=""/>
+        <label for="limite"> Data limite</label>
+        <input type="date" id="limitDate" placeholder="Data Limite" />
+        <textarea id="description" placeholder="Descrição (opcional)"></textarea>
+        <button class="add-button" >Adicionar Lembrete</button>
+    
+    </div>
+
+    <div class="lista">
+        <ul id="listaLembretes"></ul>
+    </div>
+    
+    <script src="index.js"></script>
+    
+    </body>
+
+</html>
