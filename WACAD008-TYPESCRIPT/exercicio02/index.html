@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Turma</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .student-list {
+            margin-top: 20px;
+        }
+        .student {
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gerenciador de Turma de Educação Física</h1>
+
+    <div>
+        <h2>Adicionar Aluno</h2>
+        <form id="studentForm">
+            <input type="number" id="studentId" placeholder="ID" required>
+            <input type="text" id="studentName" placeholder="Nome Completo" required>
+            <input type="number" id="studentAge" placeholder="Idade" required>
+            <input type="number" id="studentHeight" placeholder="Altura (cm)" required>
+            <input type="number" id="studentWeight" placeholder="Peso (kg)" required>
+            <button type="submit">Adicionar Aluno</button>
+        </form>
+    </div>
+
+    <div class="student-list">
+        <h2>Lista de Alunos</h2>
+        <div id="studentsContainer"></div>
+    </div>
+
+    <h2>Estatísticas</h2>
+    <div id="statistics">
+        <p>Número de alunos: <span id="numStudents">0</span></p>
+        <p>Média das idades: <span id="avgAge">0.00</span></p>
+        <p>Média das alturas (cm): <span id="avgHeight">0.00</span></p>
+        <p>Média dos pesos (kg): <span id="avgWeight">0.00</span></p>
+    </div>
+
+    <script href="index.js">
+    </script>
+</body>
+</html>

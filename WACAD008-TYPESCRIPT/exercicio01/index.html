@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lembretes</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <h1>Lembretes</h1>
+    <main class="display">
+        <aside>    
+            <div>
+                <h2 class="titulo">Adicionar Novo Lembrete</h2>
+                <form id="reminderForm">
+                    <label for="title">Título:</label>
+                    <input type="text" id="title" required>
+                    <br>
+                    <label for="insertionDate">Data e Hora de Inserção:</label>
+                    <input type="datetime-local" id="insertionDate" required>
+                    <br>
+                    <label for="dueDate">Data Limite:</label>
+                    <input type="datetime-local" id="dueDate">
+                    <br>
+                    <label for="description">Descrição:</label>
+                    <textarea id="description"></textarea>
+                    <br>
+                    <button type="submit" id="addLembrete">Adicionar Lembrete</button>
+                </form>
+            </div>
+        </aside>
+        <section>
+            <h2>Meus Lembretes</h2>
+            <ul id="reminderList" class="display"></ul>
+        </section>
+    </main>
+    <script type="module" src="index.js"></script>
+</body>
+</html>

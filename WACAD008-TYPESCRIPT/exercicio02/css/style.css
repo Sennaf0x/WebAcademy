@@ -1,0 +1,24 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: content-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+#studentForm{
+    display: flex;
+}
+
+.student-list {
+    margin-top: 20px;
+}
+.student {
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+aside{
+    margin: 10px;
+    width: 30%;  
+    padding: 10px;
+    border: 1px solid;
+}
+
+section{
+    margin: 10px;
+    border: 1px solid;
+    padding: 10px;
+    width: 100%;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input, textarea, button {
+    margin-top: 5px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.display{
+    display: flex;
+    margin: 10px;
+    list-style-type: none;
+}
+
+li{
+    margin: auto;
+    border: 1px solid;
+    padding: 10px;
+    list-style-type: none;
+}
+
+
+.titulo{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+.card{
+    max-width: 400px;
+    box-shadow: 1px 1px 1px 1px black;
+    max-height: 60vh;
+}
+
+.data{
+    display: flex;
+}
+
+.data p{
+    width: 200px;
+    padding: 5px;
+}
+
+
+.descricao .titulo{
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.area-texto{
+    border: 1px solid;
+    width: 90%;
+    height: 10vh;
+    padding: 5px;
+    margin: auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    overflow-y: auto;
+}
+
+.botoes{
+    display:flex;
+}
+
+.botoes button {
+    margin: 10px;
+}
+
+.editar{
+    background-color: #0ddb3d;
+}
+
+.deletar{
+    background-color: #eb1106;
+}
