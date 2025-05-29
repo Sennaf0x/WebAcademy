@@ -8,6 +8,7 @@ validateEnv();
 
 const app = express();
 const PORT = process.env.PORT || 3333;
+const novaVariavel = 123;
 
 app.get("/", (req: Request, res: Response) => {
  res.send("Hello world!");

@@ -10,6 +10,7 @@ dotenv_1.default.config();
 (0, validateEnv_1.default)();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3333;
+const novaVariavel = 123;
 app.get("/", (req, res) => {
     res.send("Hello world!");
 });
