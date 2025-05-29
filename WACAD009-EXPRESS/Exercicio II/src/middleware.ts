@@ -4,10 +4,6 @@ import path from 'path';
 
 const middleware = (format: string) => {
 
-    console.log("Iniciando middleware");
-    console.log(process.env.LOGS_FOLDER);
-    console.log(format);
-    
     return (req: Request, res: Response, next: NextFunction) => {
         const datetime = new Date().toISOString(); // Captura a data e a hora atual
         console.log(`Requisição recebida em: ${datetime}`); // Log no console para cada requisição
