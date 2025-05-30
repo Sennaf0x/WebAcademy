@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+</head>
+<body>
+    <h1>Carrinho de Compras</h1>
+    <form id="productForm">
+        <h2>Adicionar Produto</h2>
+        <select id="productType">
+            <option value="tv">TV</option>
+            <option value="celular">Celular</option>
+            <option value="bicicleta">Bicicleta</option>
+        </select>
+        <input type="text" id="model" placeholder="Modelo" required>
+        <input type="text" id="manufacturer" placeholder="Fabricante" required>
+        <input type="number" id="value" placeholder="Valor" required>
+        <div id="tvFields" style="display:none;">
+            <input type="text" id="resolution" placeholder="Resolução"/>
+            <input type="number" id="size" placeholder="Tamanho (polegadas)"/>
+        </div>
+        <div id="cellFields" style="display:none;">
+            <input type="text" id="memory" placeholder="Memória"/>
+        </div>
+        <div id="bikeFields" style="display:none;">
+            <input type="text" id="wheelSize" placeholder="Tamanho do Aro"/>
+        </div>
+        <button type="submit">Adicionar ao Carrinho</button>
+    </form>
+    <h2>Estatísticas do Carrinho</h2>
+    <div id="cartDetails">
+        Total de produtos: <span id="productCount">0</span><br>
+        Valor Total: <span id="totalValue">R$0.00</span>
+    </div>
+    <h2>Produtos no Carrinho</h2>
+    <ul id="productList"></ul>
+    <script src="index.js"></script>
+</body>
+</html>
