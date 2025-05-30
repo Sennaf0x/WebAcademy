@@ -1,10 +1,10 @@
 var Aluno = /** @class */ (function () {
-    function Aluno(id, nomeCompleto, idade, altura, peso) {
+    function Aluno(id, nome, idade, altura, peso) {
         this.id = id;
-        this.nomeCompleto = nomeCompleto;
+        this.nome = nome;
         this.idade = idade;
-        this.altura = altura; // em centímetros
-        this.peso = peso; // em kg
+        this.altura = altura;
+        this.peso = peso;
     }
     return Aluno;
 }());
@@ -18,78 +18,98 @@ var Turma = /** @class */ (function () {
         this.alunos.push(aluno);
         this.atualizarEstatisticas();
     };
-    Turma.prototype.editarAluno = function (id, alunoEdicao) {
-        var index = this.alunos.findIndex(function (a) { return a.id === id; });
-        if (index !== -1) {
-            this.alunos[index] = alunoEdicao;
+    Turma.prototype.editarAluno = function (id, dados) {
+        var aluno = this.alunos.find(function (a) { return a.id === id; });
+        if (aluno) {
+            Object.assign(aluno, dados);
             this.atualizarEstatisticas();
-        }
-        else {
-            console.log("Aluno não encontrado.");
         }
     };
     Turma.prototype.removerAluno = function (id) {
-        this.alunos = this.alunos.filter(function (a) { return a.id !== id; });
+        this.alunos = this.alunos.filter(function (aluno) { return aluno.id !== id; });
         this.atualizarEstatisticas();
     };
     Turma.prototype.getNumAlunos = function () {
         return this.alunos.length;
     };
-    Turma.prototype.atualizarEstatisticas = function () {
-        document.getElementById('numStudents').innerText = this.getNumAlunos();
-        document.getElementById('avgAge').innerText = this.getMediaIdades().toFixed(2);
-        document.getElementById('avgHeight').innerText = this.getMediaAlturas().toFixed(2);
-        document.getElementById('avgWeight').innerText = this.getMediaPesos().toFixed(2);
-        this.listarAlunos();
-    };
     Turma.prototype.getMediaIdades = function () {
-        return this.calcularMedia('idade');
+        return this.alunos.length > 0 ?
+            this.alunos.reduce(function (total, aluno) { return total + aluno.idade; }, 0) / this.alunos.length : 0;
     };
     Turma.prototype.getMediaAlturas = function () {
-        return this.calcularMedia('altura');
+        return this.alunos.length > 0 ?
+            this.alunos.reduce(function (total, aluno) { return total + aluno.altura; }, 0) / this.alunos.length : 0;
     };
     Turma.prototype.getMediaPesos = function () {
-        return this.calcularMedia('peso');
+        return this.alunos.length > 0 ?
+            this.alunos.reduce(function (total, aluno) { return total + aluno.peso; }, 0) / this.alunos.length : 0;
     };
-    Turma.prototype.calcularMedia = function (atributo) {
-        var total = this.alunos.reduce(function (acc, aluno) { return acc + aluno[atributo]; }, 0);
-        return total / this.getNumAlunos() || 0; // Previne divisão por zero
+    Turma.prototype.atualizarEstatisticas = function () {
+        var numAlunos = this.getNumAlunos();
+        var mediaIdades = this.getMediaIdades();
+        var mediaAlturas = this.getMediaAlturas();
+        var mediaPesos = this.getMediaPesos();
+        document.getElementById("numStudents").innerText = numAlunos.toString();
+        document.getElementById("avgAge").innerText = mediaIdades.toFixed(2);
+        document.getElementById("avgHeight").innerText = mediaAlturas.toFixed(2);
+        document.getElementById("avgWeight").innerText = mediaPesos.toFixed(2);
     };
-    Turma.prototype.listarAlunos = function () {
-        var container = document.getElementById('studentsContainer');
-        container.innerHTML = '';
-        this.alunos.forEach(function (aluno) {
-            var div = document.createElement('div');
-            div.className = 'student';
-            div.innerText = "".concat(aluno.nomeCompleto, ", Idade: ").concat(aluno.idade, ", Altura: ").concat(aluno.altura, ", Peso: ").concat(aluno.peso);
-            container.appendChild(div);
-        });
+    Turma.prototype.getAlunoById = function (id) {
+        return this.alunos.find(function (aluno) { return aluno.id === id; });
     };
     return Turma;
 }());
-var GerenciadorTurma = /** @class */ (function () {
-    function GerenciadorTurma() {
-        this.turma = new Turma(1, 'Educação Física');
-        this.init();
+// Inicialização da turma
+var turma = new Turma(1, "Turma de Educação Física");
+var idAtual = null; // ID do aluno que está sendo editado
+// Manipulação do formulário
+var form = document.getElementById("studentForm");
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    var id = idAtual !== null ? idAtual : Number(document.getElementById("studentId").value);
+    var nome = document.getElementById("studentName").value;
+    var idade = Number(document.getElementById("studentAge").value);
+    var altura = Number(document.getElementById("studentHeight").value);
+    var peso = Number(document.getElementById("studentWeight").value);
+    if (idAtual === null) {
+        // Adicionar novo aluno
+        var aluno = new Aluno(id, nome, idade, altura, peso);
+        turma.adicionarAluno(aluno);
     }
-    GerenciadorTurma.prototype.init = function () {
-        var _this = this;
-        document.getElementById('studentForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            var aluno = _this.criarAlunoDoFormulario();
-            _this.turma.adicionarAluno(aluno);
-            document.getElementById('studentForm').reset();
-        });
-    };
-    GerenciadorTurma.prototype.criarAlunoDoFormulario = function () {
-        var id = parseInt(document.getElementById('studentId').value);
-        var nomeCompleto = document.getElementById('studentName').value;
-        var idade = parseInt(document.getElementById('studentAge').value);
-        var altura = parseInt(document.getElementById('studentHeight').value);
-        var peso = parseInt(document.getElementById('studentWeight').value);
-        return new Aluno(id, nomeCompleto, idade, altura, peso);
-    };
-    return GerenciadorTurma;
-}());
-// Inicializando o gerenciador de turma
-new GerenciadorTurma();
+    else {
+        // Editar aluno existente
+        turma.editarAluno(id, { nome: nome, idade: idade, altura: altura, peso: peso });
+        idAtual = null; // Resetar ID de edição
+    }
+    // Limpar o formulário
+    form.reset();
+    atualizarListaAlunos();
+});
+// Função para atualizar a lista de alunos exibida
+function atualizarListaAlunos() {
+    var container = document.getElementById("studentsContainer");
+    container.innerHTML = ""; // Limpar o conteúdo anterior
+    turma.alunos.forEach(function (aluno) {
+        //const div = document.createElement("div");
+        //div.className = "student";
+        container.innerHTML = "\n            <div>".concat(aluno.id, "</div>\n            <div>").concat(aluno.nome, "</div>\n            <div>").concat(aluno.idade, "</div>\n            <div>").concat(aluno.altura, "</div>\n            <div>").concat(aluno.peso, "</div>\n            <div>\n                <button onclick=\"preencherFormulario(").concat(aluno.id, ")\">Editar</button>\n                <button onclick=\"removerAluno(").concat(aluno.id, ")\">Remover</button>\n            </div>\n        ");
+        //container.appendChild(div); 
+    });
+}
+// Função para preencher o formulário com os dados do aluno para edição
+function preencherFormulario(id) {
+    var aluno = turma.getAlunoById(id);
+    if (aluno) {
+        document.getElementById("studentId").value = aluno.id.toString();
+        document.getElementById("studentName").value = aluno.nome;
+        document.getElementById("studentAge").value = aluno.idade.toString();
+        document.getElementById("studentHeight").value = aluno.altura.toString();
+        document.getElementById("studentWeight").value = aluno.peso.toString();
+        idAtual = aluno.id; // Armazenar ID do aluno que está sendo editado
+    }
+}
+// Função para remover aluno
+function removerAluno(id) {
+    turma.removerAluno(id);
+    atualizarListaAlunos();
+}

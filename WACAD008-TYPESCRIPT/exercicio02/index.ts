@@ -1,125 +1,142 @@
 class Aluno {
     constructor(
         public id: number,
-        public nomeCompleto: String,
+        public nome: string,
         public idade: number,
         public altura: number,
         public peso: number
-        ) {
-        this.id = id;
-        this.nomeCompleto = nomeCompleto;
-        this.idade = idade;
-        this.altura = altura; // em centímetros
-        this.peso = peso; // em kg
-    }
+    ) {}
 }
 
-
 class Turma {
+    public alunos: Aluno[] = [];
 
+    constructor(public id: number, public nome: string) {}
 
-    constructor(
-        public id: number,
-        public nome: String,
-        public alunos: Aluno[]
-    ) {
-        this.id = id;
-        this.nome = nome;
-        this.alunos = [];
-    }
-
-    adicionarAluno(aluno) {
+    adicionarAluno(aluno: Aluno) {
         this.alunos.push(aluno);
         this.atualizarEstatisticas();
     }
 
-    editarAluno(id: number, alunoEdicao) {
-        const index = this.alunos.findIndex(a => a.id === id);
-        if (index !== -1) {
-            this.alunos[index] = alunoEdicao;
+    editarAluno(id: number, dados: Partial<Aluno>) {
+        const aluno = this.alunos.find(a => a.id === id);
+        if (aluno) {
+            Object.assign(aluno, dados);
             this.atualizarEstatisticas();
-        } else {
-            console.log("Aluno não encontrado.");
         }
     }
 
     removerAluno(id: number) {
-        this.alunos = this.alunos.filter(a => a.id !== id);
+        this.alunos = this.alunos.filter(aluno => aluno.id !== id);
         this.atualizarEstatisticas();
     }
 
-    getNumAlunos() {
+    getNumAlunos(): number {
         return this.alunos.length;
     }
 
-    atualizarEstatisticas() {
-        
-        const totalEstudantes = document.getElementById('numStudents') as HTMLElement;
-        totalEstudantes.innerText = this.getNumAlunos();
-        const mediaIdade = document.getElementById('avgAge') as HTMLElement;
-        mediaIdade.innerText = this.getMediaIdades().toFixed(2);
-        const mediaAltura = document.getElementById('avgHeight') as HTMLElement;
-        mediaAltura.innerText = this.getMediaAlturas().toFixed(2);
-        const mediaPesos = document.getElementById('avgWeight') as HTMLElement;
-        mediaPesos.innerText = this.getMediaPesos().toFixed(2);
-
-        this.listarAlunos();
+    getMediaIdades(): number {
+        return this.alunos.length > 0 ?
+            this.alunos.reduce((total, aluno) => total + aluno.idade, 0) / this.alunos.length : 0;
     }
 
-    getMediaIdades() {
-        return this.calcularMedia('idade');
+    getMediaAlturas(): number {
+        return this.alunos.length > 0 ?
+            this.alunos.reduce((total, aluno) => total + aluno.altura, 0) / this.alunos.length : 0;
     }
 
-    getMediaAlturas() {
-        return this.calcularMedia('altura');
+    getMediaPesos(): number {
+        return this.alunos.length > 0 ?
+            this.alunos.reduce((total, aluno) => total + aluno.peso, 0) / this.alunos.length : 0;
     }
 
-    getMediaPesos() {
-        return this.calcularMedia('peso');
+    private atualizarEstatisticas() {
+        const numAlunos = this.getNumAlunos();
+        const mediaIdades = this.getMediaIdades();
+        const mediaAlturas = this.getMediaAlturas();
+        const mediaPesos = this.getMediaPesos();
+
+        document.getElementById("numStudents")!.innerText = numAlunos.toString();
+        document.getElementById("avgAge")!.innerText = mediaIdades.toFixed(2);
+        document.getElementById("avgHeight")!.innerText = mediaAlturas.toFixed(2);
+        document.getElementById("avgWeight")!.innerText = mediaPesos.toFixed(2);
     }
 
-    calcularMedia(atributo) {
-        const total = this.alunos.reduce((acc, aluno) => acc + aluno[atributo], 0);
-        return total / this.getNumAlunos() || 0; // Previne divisão por zero
-    }
-
-    listarAlunos() {
-        const container = document.getElementById('studentsContainer') as HTMLElement;
-        container.innerHTML = '';
-        this.alunos.forEach(aluno => {
-            const div = document.createElement('div');
-            div.className = 'student';
-            div.innerText = `${aluno.nomeCompleto}, Idade: ${aluno.idade}, Altura: ${aluno.altura}, Peso: ${aluno.peso}`;
-            container.appendChild(div);
-        });
+    getAlunoById(id: number): Aluno | undefined {
+        return this.alunos.find(aluno => aluno.id === id);
     }
 }
 
-class GerenciadorTurma {
-    constructor() {
-        this.turma = new Turma(1, 'Educação Física');
-        this.init();
+// Inicialização da turma
+const turma = new Turma(1, "Turma de Educação Física");
+
+let idAtual: number | null = null; // ID do aluno que está sendo editado
+
+// Manipulação do formulário
+const form = document.getElementById("studentForm") as HTMLFormElement;
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const id = idAtual !== null ? idAtual : Number((document.getElementById("studentId") as HTMLInputElement).value);
+    const nome = (document.getElementById("studentName") as HTMLInputElement).value;
+    const idade = Number((document.getElementById("studentAge") as HTMLInputElement).value);
+    const altura = Number((document.getElementById("studentHeight") as HTMLInputElement).value);
+    const peso = Number((document.getElementById("studentWeight") as HTMLInputElement).value);
+
+    if (idAtual === null) {
+        // Adicionar novo aluno
+        const aluno = new Aluno(id, nome, idade, altura, peso);
+        turma.adicionarAluno(aluno);
+    } else {
+        // Editar aluno existente
+        turma.editarAluno(id, { nome, idade, altura, peso });
+        idAtual = null; // Resetar ID de edição
     }
 
-    init() {
-        const form = document.getElementById('studentForm') as HTMLFormElement; 
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const aluno = this.criarAlunoDoFormulario();
-            this.turma.adicionarAluno(aluno);
-            form.reset();
-        });
-    }
+    // Limpar o formulário
+    form.reset();
+    atualizarListaAlunos();
+});
 
-    criarAlunoDoFormulario() {
-        const id = (document.getElementById('studentId') as HTMLInputElement).value;
-        const nomeCompleto = (document.getElementById('studentName') as HTMLInputElement).value;
-        const idade = (document.getElementById('studentAge') as HTMLInputElement).value;
-        const altura = (document.getElementById('studentHeight') as HTMLInputElement).value;
-        const peso = (document.getElementById('studentWeight') as HTMLInputElement).value;
-        return new Aluno(id, nomeCompleto, idade, altura, peso);
+// Função para atualizar a lista de alunos exibida
+function atualizarListaAlunos() {
+    const container = document.getElementById("studentsContainer")!; 
+    container.innerHTML = ""; // Limpar o conteúdo anterior
+
+    turma.alunos.forEach(aluno => {
+        //const div = document.createElement("div");
+        //div.className = "student";
+        container.innerHTML = `
+            <div>${aluno.id}</div>
+            <div>${aluno.nome}</div>
+            <div>${aluno.idade}</div>
+            <div>${aluno.altura}</div>
+            <div>${aluno.peso}</div>
+            <div>
+                <button onclick="preencherFormulario(${aluno.id})">Editar</button>
+                <button onclick="removerAluno(${aluno.id})">Remover</button>
+            </div>
+        `;
+        //container.appendChild(div); 
+    });
+}
+
+// Função para preencher o formulário com os dados do aluno para edição
+function preencherFormulario(id: number) {
+    const aluno = turma.getAlunoById(id);
+    if (aluno) {
+        (document.getElementById("studentId") as HTMLInputElement).value = aluno.id.toString();
+        (document.getElementById("studentName") as HTMLInputElement).value = aluno.nome;
+        (document.getElementById("studentAge") as HTMLInputElement).value = aluno.idade.toString();
+        (document.getElementById("studentHeight") as HTMLInputElement).value = aluno.altura.toString();
+        (document.getElementById("studentWeight") as HTMLInputElement).value = aluno.peso.toString();
+
+        idAtual = aluno.id; // Armazenar ID do aluno que está sendo editado
     }
 }
 
-// Inicializando o gerenciador de turma
-new GerenciadorTurma();
+// Função para remover aluno
+function removerAluno(id: number) {
+    turma.removerAluno(id);
+    atualizarListaAlunos();
+}

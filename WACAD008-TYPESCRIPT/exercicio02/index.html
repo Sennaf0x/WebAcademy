@@ -4,22 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de Turma</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .student-list {
-            margin-top: 20px;
-        }
-        .student {
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
@@ -38,8 +23,19 @@
     </div>
 
     <div class="student-list">
+
         <h2>Lista de Alunos</h2>
-        <div id="studentsContainer"></div>
+        <div id="studentsTable" class="student">
+            <div>ID</div>
+            <div>Nome</div>
+            <div>Idade</div>
+            <div>Altura (cm)</div>
+            <div>Peso (kg)</div>
+            <div>Ações</div>
+        </div>
+        <div id="studentsContainer" class="student">
+            
+        </div>
     </div>
 
     <h2>Estatísticas</h2>
@@ -50,7 +46,6 @@
         <p>Média dos pesos (kg): <span id="avgWeight">0.00</span></p>
     </div>
 
-    <script href="index.js">
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>

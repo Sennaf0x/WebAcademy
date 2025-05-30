@@ -14,11 +14,22 @@ body {
 
 .student-list {
     margin-top: 20px;
+    width: 100%;
 }
 .student {
-    margin: 5px 0;
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    justify-content: center;
+}
+
+.student > div {
+    margin: 10px;
+    width: 100px;
     border: 1px solid #ccc;
     padding: 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
