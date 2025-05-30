@@ -20,9 +20,14 @@ app.use(middleware(process.env.LOGS_FORMAT || 'simples'));
 
 // Iniciando Handlebars
 
-app.engine("handlebars", engine());
+//app.engine("handlebars", engine());
+app.engine('handlebars', engine({
+ layoutsDir: `${__dirname}/views/layouts`,
+ defaultLayout: 'layouts/main',
+}))
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
+
 
 //Helpers
 app.engine("handlebars", engine({

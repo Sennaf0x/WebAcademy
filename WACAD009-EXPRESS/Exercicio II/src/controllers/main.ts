@@ -20,18 +20,18 @@ const lorem = (req: Request, res: Response) => {
 const hb1 = (req: Request, res: Response) => {
     res.render('main/hb1', {
                         mensagem: 'Olá, você está na página de HB1!',
-                        layout: false,
+                        layout: 'main',
                     });
 };
 
 const hb2 = (req: Request, res: Response) => {
     res.render('main/hb2', {
-                        name: 'React',
-                        type: 'library',
-                        poweredByNode: true,
-                        layout: false,
-                        });
-};
+                                name: 'React',
+                                type: 'library',
+                                poweredByNode: true,
+                                layout: 'main',
+                            }
+    )};
 
 const hb3 = (req: Request, res: Response) => {
     const profes = [
@@ -40,7 +40,7 @@ const hb3 = (req: Request, res: Response) => {
                         { nome: 'Edleno Moura', sala: 1236 },
                         { nome: 'Elaine Harada', sala: 1231 }
                     ];
-    res.render('main/hb3', { profes, layout: false });
+    res.render('main/hb3', { profes, layout: 'main' });
 }
 
 const hb4 = (req: Request, res: Response) => {
