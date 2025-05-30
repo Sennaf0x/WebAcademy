@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { engine } from 'express-handlebars';
 import path from "path";
 import dotenv from "dotenv";
+import sass from 'node-sass-middleware';
 
 import validateEnv from "./utils/validateEnv";
 import middleware from './middlewares/middleware';
@@ -28,6 +29,19 @@ app.engine('handlebars', engine({
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
 
+// assets
+app.use('/img', [
+ express.static(`${__dirname}/public/img`)
+]);
+
+app.use(sass({
+ src: `${__dirname}/../public/scss`,
+ dest: `${__dirname}/../public/css`,
+ outputStyle: "compressed",
+ prefix: "/css",
+}));
+
+app.use("/css", express.static(`${__dirname}/../../../public/css`));
 
 //Helpers
 app.engine("handlebars", engine({
