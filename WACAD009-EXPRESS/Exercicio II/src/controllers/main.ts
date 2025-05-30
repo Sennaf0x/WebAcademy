@@ -19,6 +19,7 @@ const lorem = (req: Request, res: Response) => {
 
 const hb1 = (req: Request, res: Response) => {
     res.render('main/hb1', {
+                        title: "Página Hb1",
                         mensagem: 'Olá, você está na página de HB1!',
                         layout: 'main',
                     });
@@ -26,6 +27,7 @@ const hb1 = (req: Request, res: Response) => {
 
 const hb2 = (req: Request, res: Response) => {
     res.render('main/hb2', {
+                                title: "Página Hb2",
                                 name: 'React',
                                 type: 'library',
                                 poweredByNode: true,
@@ -40,7 +42,7 @@ const hb3 = (req: Request, res: Response) => {
                         { nome: 'Edleno Moura', sala: 1236 },
                         { nome: 'Elaine Harada', sala: 1231 }
                     ];
-    res.render('main/hb3', { profes, layout: 'main' });
+    res.render('main/hb3', { profes, title: "Página Hb3", layout: 'main' });
 }
 
 const hb4 = (req: Request, res: Response) => {
