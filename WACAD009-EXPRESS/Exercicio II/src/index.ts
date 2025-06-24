@@ -8,6 +8,7 @@ import validateEnv from "./utils/validateEnv";
 import middleware from './middlewares/middleware';
 import routes from './router/router';
 
+
 dotenv.config();
 validateEnv();
 

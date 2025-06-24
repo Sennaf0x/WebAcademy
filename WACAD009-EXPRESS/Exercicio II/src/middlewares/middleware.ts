@@ -1,23 +1,23 @@
 import { Request, Response, NextFunction } from 'express';
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 
 const middleware = (format: string) => {
+    return async (req: Request, res: Response, next: NextFunction) => {
+        const datetime = new Date().toISOString();
+        console.log(`Requisição recebida em: ${datetime}`);
 
-    return (req: Request, res: Response, next: NextFunction) => {
-        const datetime = new Date().toISOString(); // Captura a data e a hora atual
-        console.log(`Requisição recebida em: ${datetime}`); // Log no console para cada requisição
-
-        const logDir = process.env.LOGS_FOLDER || 'logs'; 
+        const logDir = process.env.LOGS_FOLDER || 'logs';
         const logPath = path.join(logDir, 'access.log');
 
-        // Verifique se o diretório de logs existe, se não, crie-o
-        if (!fs.existsSync(logDir)) {
+        // Checar e criar o diretório de forma assíncrona
+        try {
+            await fs.access(logDir);
+        } catch (err) {
             console.log(`Diretório ${logDir} não existe. Criando...`);
-            fs.mkdirSync(logDir, { recursive: true });
+            await fs.mkdir(logDir, { recursive: true });
         }
-
-        // Criação da mensagem de log com base no formato
+        
         let logMessage: string;
         if (format === 'simples') {
             logMessage = `${datetime} - ${req.method} ${req.url}\n`;
@@ -30,10 +30,12 @@ const middleware = (format: string) => {
             return next();
         }
 
-        // Escreve a mensagem de log no arquivo
-        fs.appendFileSync(logPath, logMessage);
-        
-        // Chama o próximo middleware ou o manipulador de rota
+        try {
+            await fs.appendFile(logPath, logMessage);
+        } catch (err) {
+            console.error("Erro ao escrever log:", err);
+        }
+
         next();
     };
 };

@@ -1,0 +1,12 @@
+<h1>Editar Produto</h1>
+<form action="/product/edit/{{product.id}}" method="post">
+    <div>
+        <label>Nome:</label>
+        <input type="text" name="name" value="{{product.name}}" required>
+    </div>
+    <div>
+        <label>Preço:</label>
+        <input type="number" name="price" value="{{product.price}}" required>
+    </div>
+    <input type="submit" value="Atualizar">
+</form>
