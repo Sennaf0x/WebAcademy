@@ -2,7 +2,11 @@ import { Request, Response } from 'express';
 import { listTechs } from "../views/helpers/helpers";
 
 const index = (req: Request, res: Response) => {
- res.end('Welcome to Web academy!');
+    res.render('main/index', {
+        title: "Página Inicial",
+        mensagem:"Welcome to Web Academy",
+        layout: 'main'
+    });
 };
 
 const lorem = (req: Request, res: Response) => {
