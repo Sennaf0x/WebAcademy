@@ -1,0 +1,134 @@
+type: collection.insomnia.rest/5.0
+name: products
+meta:
+  id: wrk_79a20372fd5f4f17890d65b956ed3584
+  created: 1751865427481
+  modified: 1751866232535
+  description: ""
+collection:
+  - url: localhost:3000/products/
+    name: GET product
+    meta:
+      id: req_be5be9d0c48e4d1ea5b379f39078ab58
+      created: 1751865427598
+      modified: 1751866172561
+      isPrivate: false
+      description: ""
+      sortKey: -1751865427598
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"id": 4,
+        		"name": "produto 4 alterado",
+        		"price": 123
+        	}
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/products/
+    name: POST product
+    meta:
+      id: req_361477cb14694b99a795dce2522945ee
+      created: 1751865955948
+      modified: 1751866022416
+      isPrivate: false
+      description: ""
+      sortKey: -1751865955948
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"name": "produto 5 ",
+        		"price": 789
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/products/3
+    name: PUT product
+    meta:
+      id: req_51036b4d2dfb476f80051eb6a6ab1e6d
+      created: 1751866037001
+      modified: 1751866104521
+      isPrivate: false
+      description: ""
+      sortKey: -1751866037001
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"id": 3,
+        		"name": "produto 3",
+        		"price": 458
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:3000/products/1
+    name: DELETE product
+    meta:
+      id: req_2f305bcb899f4711bf8c5c6df46289d8
+      created: 1751866107056
+      modified: 1751866141355
+      isPrivate: false
+      description: ""
+      sortKey: -1751866107056
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/11.2.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_225fa3f89012d12cd9cb24abf5b3477e71957a94
+    created: 1751865427499
+    modified: 1751865427499
+environments:
+  name: Base Environment
+  meta:
+    id: env_225fa3f89012d12cd9cb24abf5b3477e71957a94
+    created: 1751865427496
+    modified: 1751865427496
+    isPrivate: false
