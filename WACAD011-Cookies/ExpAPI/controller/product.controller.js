@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { productSchema } from '../schemas/product.schema.js';
 
 const prisma = new PrismaClient();
 
@@ -12,7 +13,16 @@ export const index = async (req, res) => {
 };
 
 export const create = async (req, res) => {
+  
+  //validação para criar o produto
+  const { error } = productSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
+
+  // Após validar os dados
   const { name, price } = req.body;
+
   if (!name || price === undefined) {
     return res.status(400).json({ message: 'Name and price are required' });
   }
@@ -38,6 +48,12 @@ export const read = async (req, res) => {
 
 export const update = async (req, res) => {
   const id = Number(req.params.id);
+
+  const { error } = productSchema.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
+
   const { name, price } = req.body;
   if (isNaN(id)) return res.status(400).json({ message: 'Invalid product id' });
   try {
