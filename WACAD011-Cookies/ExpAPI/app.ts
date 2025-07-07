@@ -1,7 +1,7 @@
-import express from 'express';
-import productRouter from './router/product.router.js';
+import express, { Application } from 'express';
+import productRouter from './router/product.router';
 
-const app = express();
+const app: Application = express();
 app.use(express.json());
 
 app.use('/products', productRouter);
