@@ -1,8 +1,8 @@
 import React from "react";
 
 interface ResumoCarrinhoProps {
-    quantidadeTotal: number; // Recebendo a quantidade total de itens
-    valorTotal: number;       // Recebendo o valor total da compra
+    quantidadeTotal: number;
+    valorTotal: number; 
 }
 
 const ResumoCarrinho: React.FC<ResumoCarrinhoProps> = ({ quantidadeTotal, valorTotal }) => {

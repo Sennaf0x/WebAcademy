@@ -70,21 +70,6 @@ export const mockProdutos: Produto[] = [
     usuario_id: "lobo@origamid.com",
   },
   {
-    id: "notebook-2",
-    fotos: [
-      {
-        titulo: "notebook-3",
-        src: "https://ranekapi.origamid.dev/wp-content/uploads/2019/03/notebook-1.jpg",
-      },
-    ],
-    nome: "Notebook",
-    preco: "4999",
-    descricao:
-      "Caros amigos, o comprometimento entre as equipes ainda não demonstrou convincentemente.",
-    vendido: "false",
-    usuario_id: "lobo@origamid.com",
-  },
-  {
     id: "tablet",
     fotos: [
       {
@@ -98,24 +83,6 @@ export const mockProdutos: Produto[] = [
       "Gostaria de enfatizar que o início da atividade geral de formação de atitudes pode nos levar a considerar.",
     vendido: "false",
     usuario_id: "lobo@origamid.com",
-  },
-  {
-    id: "smartphone",
-    fotos: [
-      {
-        titulo: "smartphone-2",
-        src: "https://ranekapi.origamid.dev/wp-content/uploads/2019/03/smartphone-1.jpg",
-      },
-      {
-        titulo: "smartwatch",
-        src: "https://ranekapi.origamid.dev/wp-content/uploads/2019/03/smartwatch.jpg",
-      },
-    ],
-    nome: "Smartphone",
-    preco: "2333",
-    descricao: "Novo smartphone.",
-    vendido: "false",
-    usuario_id: "joao@gmail.com",
   },
   {
     id: "smartspeaker",
@@ -134,23 +101,5 @@ export const mockProdutos: Produto[] = [
     descricao: "Esse é um speaker novo.",
     vendido: "false",
     usuario_id: "maria@origamid.com",
-  },
-  {
-    id: "notebook",
-    fotos: [
-      {
-        titulo: "notebook-2",
-        src: "https://ranekapi.origamid.dev/wp-content/uploads/2019/03/notebook.jpg",
-      },
-      {
-        titulo: "smartphone",
-        src: "https://ranekapi.origamid.dev/wp-content/uploads/2019/03/smartphone.jpg",
-      },
-    ],
-    nome: "Notebook",
-    preco: "2499.50",
-    descricao: "Esse é um notebook novo.",
-    vendido: "false",
-    usuario_id: "maria@origamid.com",
-  },
+  }
 ];

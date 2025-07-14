@@ -1,15 +1,13 @@
-// src/components/CardProduto.tsx
-
 import React from "react";
 import Image from "next/image";
 import { Produto } from "../../types/produto";
 
 interface ProdutoProps {
     produto: Produto; 
+    adicionarAoCarrinho: (produto: Produto) => void;
 }
 
-const CardProduto: React.FC<ProdutoProps> = ({ produto }) => {
-    
+const CardProduto: React.FC<ProdutoProps> = ({ produto, adicionarAoCarrinho }) => {
     const imagem = produto.fotos[0]?.src || "/placeholder.png";
 
     return (
@@ -24,7 +22,11 @@ const CardProduto: React.FC<ProdutoProps> = ({ produto }) => {
             <div className="card-body bg-light">
                 <h5 className="card-title">{produto.nome}</h5>
                 <p className="card-text text-secondary">R$ {produto.preco}</p>
-                <button className="btn btn-dark d-block w-100" type="button">
+                <button
+                    className="btn btn-dark d-block w-100"
+                    type="button"
+                    onClick={() => adicionarAoCarrinho(produto)}
+                >
                     Adicionar no carrinho
                 </button>
             </div>
