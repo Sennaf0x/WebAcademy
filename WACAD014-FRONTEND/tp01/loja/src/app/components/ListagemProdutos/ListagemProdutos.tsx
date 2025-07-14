@@ -1,15 +1,14 @@
+// src/components/ListagemProdutos.tsx
 
 import React from "react";
 import CardProduto from "../CardProduto/CardProduto";
+import { Produto } from "../../types/produto";
 
-const produtos = [
-    { id: 1, nome: "Notebook 1", preco: 1500, imagem: "/placeholder.png" },
-    { id: 2, nome: "Notebook 2", preco: 1500, imagem: "/placeholder.png" },
-    { id: 3, nome: "Notebook 3", preco: 1500, imagem: "/placeholder.png" },
-    { id: 4, nome: "Notebook 4", preco: 1500, imagem: "/placeholder.png" },
-];
+interface ListagemProdutosProps {
+    produtos: Produto[];
+}
 
-const ListagemProdutos: React.FC = () => {
+const ListagemProdutos: React.FC<ListagemProdutosProps> = ({ produtos }) => {
     return (
         <>
             <h5 className="mb-3">Produtos disponíveis:</h5>

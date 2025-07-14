@@ -1,22 +1,23 @@
+// src/components/CardProduto.tsx
 
 import React from "react";
 import Image from "next/image";
+import { Produto } from "../../types/produto";
 
 interface ProdutoProps {
-    produto: {
-        nome: string;
-        preco: number;
-        imagem: string;
-    };
+    produto: Produto; 
 }
 
 const CardProduto: React.FC<ProdutoProps> = ({ produto }) => {
+    
+    const imagem = produto.fotos[0]?.src || "/placeholder.png";
+
     return (
         <div className="card shadow-sm h-100">
             <Image
-                src={produto.imagem}
+                src={imagem}
                 className="card-img-top"
-                alt="imagem placeholder"
+                alt={produto.nome}
                 width={300}
                 height={320}
             />

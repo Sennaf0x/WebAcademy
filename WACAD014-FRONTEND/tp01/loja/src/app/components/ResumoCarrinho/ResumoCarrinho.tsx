@@ -1,10 +1,11 @@
-
 import React from "react";
 
-const ResumoCarrinho: React.FC = () => {
-    const quantidadeTotal = 10;
-    const valorTotal = 1500;
+interface ResumoCarrinhoProps {
+    quantidadeTotal: number; // Recebendo a quantidade total de itens
+    valorTotal: number;       // Recebendo o valor total da compra
+}
 
+const ResumoCarrinho: React.FC<ResumoCarrinhoProps> = ({ quantidadeTotal, valorTotal }) => {
     return (
         <div className="card mb-4">
             <div className="card-body">

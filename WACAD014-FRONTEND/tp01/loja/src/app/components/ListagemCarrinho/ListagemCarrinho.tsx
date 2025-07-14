@@ -1,19 +1,38 @@
-// components/ListagemCarrinho.tsx
 import React from "react";
-import ItemCarrinho from "../ItemCarrinho/ItemCarrinho";
+import ItemCarrinho from "../ItemCarrinho/MockItensCarrinho";
+import { ItemCarrinho as ItemCarrinhoType } from "@/app/types/carrinho";
 
-const ListagemCarrinho: React.FC = () => {
-    const itensCarrinho = [
-        { id: 1, nome: "Notebook 1", quantidade: 2, preco: 1500 },
-        { id: 2, nome: "Notebook 2", quantidade: 1, preco: 1500 },
-    ];
+interface ListagemCarrinhoProps {
+    itensCarrinho: ItemCarrinhoType[];
+}
 
+const ListagemCarrinho: React.FC<ListagemCarrinhoProps> = ({ itensCarrinho }) => {
     return (
-        <div>
-            {itensCarrinho.map((item) => (
-                <ItemCarrinho key={item.id} item={item} />
-            ))}
-        </div>
+          <div className="card mb-4">
+            <div className="row card-body">
+              <h5 className="card-title mb-4 fw-light">
+                Produtos selecionados
+              </h5>
+                <div className="table-responsive">
+                    <table className="table ">
+                        <thead>
+                            <tr>
+                              <th>Produto</th>
+                              <th>Valor Unitário</th>
+                              <th>Quantidade</th>
+                              <th>Valor Total</th>
+                              <th>Opções</th>
+                            </tr>
+                        </thead>
+                        <tbody>     
+                                {itensCarrinho.map((item) => (
+                                    <ItemCarrinho key={item.id} item={item} />
+                                ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
     );
 };
 
