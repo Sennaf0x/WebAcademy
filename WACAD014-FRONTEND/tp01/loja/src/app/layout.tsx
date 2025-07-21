@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar/Navbar";
 import BootstrapClient from "./components/BootstrapClient/BootstrapClient";
+import { ReactQueryClientProvider } from "./components/ReactQueryClient/ReactQueryClient";
 
 
 export const metadata: Metadata = {
@@ -17,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        {children}
-        <BootstrapClient />
+        <ReactQueryClientProvider>
+          <Navbar />
+          {children}
+          <BootstrapClient />
+        </ReactQueryClientProvider>
       </body>
     </html>
   );
