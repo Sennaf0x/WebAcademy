@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Produto } from "../../types/produto";
+import { useFavoritos } from "@/app/hooks/useFavoritos";
 
 interface ProdutoProps {
     produto: Produto; 
@@ -9,6 +10,12 @@ interface ProdutoProps {
 
 const CardProduto: React.FC<ProdutoProps> = ({ produto, adicionarAoCarrinho }) => {
     const imagem = produto.fotos[0]?.src || "/placeholder.png";
+
+    const { mutate: adicionarFavorito } = useFavoritos();
+
+    const handleFavoritar = () => {
+        adicionarFavorito(produto);
+    };
 
     return (
         <div className="card shadow-sm h-100">
@@ -28,6 +35,13 @@ const CardProduto: React.FC<ProdutoProps> = ({ produto, adicionarAoCarrinho }) =
                     onClick={() => adicionarAoCarrinho(produto)}
                 >
                     Adicionar no carrinho
+                </button>
+                <button
+                    className="btn btn-outline-danger d-block w-100 mt-2"
+                    type="button"
+                    onClick={handleFavoritar}
+                >
+                    Favoritar
                 </button>
             </div>
         </div>
