@@ -1,6 +1,5 @@
 "use client";
 
-import { FavoritosProvider } from './contexts/FavoritosContext';
 import ListagemProdutos from "./components/ListagemProdutos/ListagemProdutos";
 import { mockProdutos } from "./mocks/produtos";
 
@@ -12,11 +11,9 @@ export default function App() {
   return (
     <main>
       <div className="container p-5">
-        <FavoritosProvider>
           <ListagemProdutos
             produtos={produtos}
           />
-        </FavoritosProvider>
       </div>
     </main>
   );

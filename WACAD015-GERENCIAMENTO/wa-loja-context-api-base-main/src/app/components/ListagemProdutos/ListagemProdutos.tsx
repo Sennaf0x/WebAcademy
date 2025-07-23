@@ -2,13 +2,13 @@
 import CardProduto from "../CardProduto/CardProduto";
 import ResumoFavoritos from "../ResumoFavoritos/ResumoFavoritos";
 import { useFavoritos } from '../../contexts/FavoritosContext';
-import { Produto } from "@/app/types/produto";
+import { Produto } from '../../types/produto';
 
-interface IProdutos {
+interface ListagemProdutosProps {
   produtos: Produto[];
 }
 
-export default function ListagemProdutos({ produtos }: IProdutos) {
+export default function ListagemProdutos({ produtos }: ListagemProdutosProps) {
   const { favoritos, setFavoritos } = useFavoritos();
 
   return (
