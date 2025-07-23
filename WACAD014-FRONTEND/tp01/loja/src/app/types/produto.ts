@@ -9,3 +9,4 @@ export interface Produto {
     vendido: string;      
     usuario_id: string; 
 }
+

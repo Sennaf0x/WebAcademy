@@ -7,3 +7,9 @@ export async function addProdutosFavoritos(novoFavorito: Produto){
         .post<Produto>('/favoritos', novoFavorito)
         .then((response) => response.data);
 }
+
+export async function getListaFavoritos(): Promise<Produto[]>{
+    return apiFavoritos
+        .get("/favoritos")
+        .then((response) => response.data);
+}
