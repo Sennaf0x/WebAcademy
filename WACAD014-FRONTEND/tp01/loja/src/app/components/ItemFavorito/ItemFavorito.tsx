@@ -12,7 +12,7 @@ const ItemFavorito: React.FC<ItemFavoritoProps> = ({ produto, refetchFavoritos }
     const deleteMutation = useDeleteFavorito(refetchFavoritos);
 
     const handleDelete = () => {
-        deleteMutation.mutate(produto.id); // Passa o ID do produto a ser deletado
+        deleteMutation.mutate(produto.id);
     };
     return (
         <tr>
@@ -22,9 +22,8 @@ const ItemFavorito: React.FC<ItemFavoritoProps> = ({ produto, refetchFavoritos }
                 <button 
                 className="btn btn-danger btn-sm"
                 onClick={handleDelete}
-                disabled={deleteMutation.isLoading}
                 >
-                   {deleteMutation.isLoading ? 'Removendo...' : 'Remover'}
+                    Remover
                 </button>
             </td>
         </tr>
@@ -32,7 +31,3 @@ const ItemFavorito: React.FC<ItemFavoritoProps> = ({ produto, refetchFavoritos }
 };
 
 export default ItemFavorito;
-
-function refetchFavoritos(): void {
-    throw new Error("Function not implemented.");
-}

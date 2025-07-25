@@ -7,3 +7,4 @@ export const produtosApi = axios.create({
 export const apiFavoritos = axios.create({
     baseURL: "https://web-academy-json.vercel.app/" 
 })
+

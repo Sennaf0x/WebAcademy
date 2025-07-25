@@ -37,9 +37,11 @@ export default function Login() {
               </div>
 
               <div className="d-grid col-12">
-                <button type="submit" className="btn btn-success">
-                  Entrar
-                </button>
+                <Link href="/">
+                  <button type="submit" className="btn btn-success">
+                    Entrar
+                  </button>
+                </Link>
               </div>
 
               <div className="text-center mt-3">
