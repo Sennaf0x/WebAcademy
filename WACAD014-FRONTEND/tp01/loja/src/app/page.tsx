@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import ListagemProdutos from "./components/ListagemProdutos/ListagemProdutos";
 import ResumoCarrinho from "./components/ResumoCarrinho/ResumoCarrinho";
-import { mockProdutos } from "./mocks/produtos";
 import { mockItensCarrinho } from "./mocks/itensCarrinho"; 
 import { Produto } from "./types/produto";
 import { useListaProdutos } from "./hooks/useListaProdutos";

@@ -13,3 +13,10 @@ export async function getListaFavoritos(): Promise<Produto[]>{
         .get("/favoritos")
         .then((response) => response.data);
 }
+
+export async function deleteProdutoFavoritos(id: string) {
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    return apiFavoritos
+        .delete(`/favoritos/${id}`)
+        .then((response) => response.data);
+}

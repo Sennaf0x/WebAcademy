@@ -3,10 +3,10 @@ import { getListaFavoritos } from "../services/favoritos";
 
 
 export function useListaFavoritos() {
-    const { data, isPending, isError } = useQuery({
+    const { data, isPending, isError, refetch } = useQuery({
         queryKey: ["listaProdutosFavoritos"],
         queryFn: getListaFavoritos,
     });
 
-    return { produtos: data, isPending, isError };
+    return { produtos: data, isPending, isError, refetchFavoritos: refetch };
 }

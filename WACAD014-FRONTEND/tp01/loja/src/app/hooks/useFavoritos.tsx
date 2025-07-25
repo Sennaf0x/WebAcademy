@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { Produto } from "../types/produto";
-import { addProdutosFavoritos } from "../services/favoritos";
+import { addProdutosFavoritos, deleteProdutoFavoritos } from "../services/favoritos";
 import { toast } from "react-toastify";
 
 export function useFavoritos() {
@@ -15,6 +15,22 @@ export function useFavoritos() {
             }
         }
     );
+
+    return mutation;
+}
+
+export function useDeleteFavorito(refetchFavoritos: () => void) {
+    const mutation = useMutation<void, Error, string>({
+        mutationFn: (id: string) => deleteProdutoFavoritos(id),
+        onSuccess: () => {
+            toast.success("Produto removido com sucesso!");
+            refetchFavoritos();
+        },
+        onError: () => {
+            toast.error("Erro ao remover o produto. Tente novamente.");
+        }
+            
+    });
 
     return mutation;
 }

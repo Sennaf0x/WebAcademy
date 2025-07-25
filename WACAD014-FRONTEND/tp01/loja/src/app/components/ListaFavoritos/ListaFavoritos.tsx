@@ -3,11 +3,13 @@ import ItemFavorito from "../ItemFavorito/ItemFavorito";
 import { Produto } from "@/app/types/produto";
 
 interface ListaFavoritosProps {
+    refetchFavoritos: () => void;
     produtos: Produto[];
 }
 
 export default function ListagemFavoritos({
     produtos,
+    refetchFavoritos,
 }: ListaFavoritosProps) {
 
     return (
@@ -27,7 +29,8 @@ export default function ListagemFavoritos({
                             {produtos.map((produto) => (
                                 <ItemFavorito 
                                     key={produto.id}
-                                    produto={produto} 
+                                    produto={produto}
+                                    refetchFavoritos={refetchFavoritos} 
                                 />
                             ))}
                         </tbody>

@@ -6,7 +6,7 @@ import { useListaFavoritos } from "../hooks/getFavoritos";
 
 const PageFavoritos: React.FC = () => {
 
-    const { produtos, isPending, isError } = useListaFavoritos();
+    const { produtos, isPending, isError, refetchFavoritos } = useListaFavoritos();
     
     if (isPending) return <h5>Carregando...</h5>; 
     
@@ -18,7 +18,9 @@ const PageFavoritos: React.FC = () => {
         <main>
             <div className="container p-5">
                 <h2>Meus Favoritos</h2>
-                <ListaFavoritos produtos={produtos} />
+                <ListaFavoritos 
+                    refetchFavoritos={refetchFavoritos}
+                    produtos={produtos} />
             </div>
         </main>
     );

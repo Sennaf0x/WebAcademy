@@ -38,8 +38,9 @@ export default function Navbar() {
                 </a>
               </li>
             </ul>
-
-            <button className="btn btn-dark">Sair</button>
+            <a href="/login">
+              <button className="btn btn-dark">Sair</button>
+            </a>
           </div>
         </div>
       </nav>
