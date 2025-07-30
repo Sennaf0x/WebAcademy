@@ -8,6 +8,8 @@
  - DELETE /products/:id
  - POST /login  "O token gerado no login deve ser é disponibilizado no terminal e deve ser colado no postman ou insomnia para autenticação"
  - POST /signup
+ - POST /cart
+ - POST /checkout
 
 # Validações
  - GET e POST com 3 ou mais caracteres em name
