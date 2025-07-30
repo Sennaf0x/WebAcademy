@@ -8,6 +8,8 @@ import { v4 as uuidv4 } from 'uuid';
 import userRouter from './router/user.router';
 import authRouter from './resources/authentication/auth.router';
 import purchaseRouter from './router/purchase.router';
+import swaggerUi from "swagger-ui-express";
+import swaggerFile from "./swagger-output.json";
 
 declare module "express-session" {
  interface SessionData {
@@ -36,6 +38,7 @@ app.use('/language', languageRouter);
 app.use('/user', userRouter);
 app.use('/order', purchaseRouter);
 
+app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 
 const PORT = process.env.PORT || 3000;

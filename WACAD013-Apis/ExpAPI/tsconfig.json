@@ -19,6 +19,7 @@
     "outDir": "./dist",
     "strict": true,
     "skipLibCheck": true,
+    "resolveJsonModule": true
     // "lib": [],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
     // "jsx": "preserve",                                /* Specify what JSX code is generated. */
     // "libReplacement": true,                           /* Enable lib replacement. */
