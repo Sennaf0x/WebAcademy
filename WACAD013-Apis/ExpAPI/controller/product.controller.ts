@@ -15,6 +15,7 @@ export const index = async (req: Request, res: Response): Promise<void> => {
 
 export const create = async (req: Request, res: Response): Promise<void> => {
   const { error } = productSchema.validate(req.body);
+  
   if (error) {
     res.status(400).json({ message: error.details[0].message });
     return;

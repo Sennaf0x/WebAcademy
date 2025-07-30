@@ -6,7 +6,14 @@ import languageRouter from './language/language.router';
 import session from 'express-session';
 import { v4 as uuidv4 } from 'uuid';
 import userRouter from './router/user.router';
+import authRouter from './resources/authentication/auth.router';
 
+declare module "express-session" {
+ interface SessionData {
+ uid: string;
+ userTypeId: string
+ }
+}
 
 const app: Application = express();
 
@@ -17,13 +24,17 @@ app.use(session({
  saveUninitialized: true
 }));
 
+
 app.use(cookieParser());
 app.use(setLangCookie);
 app.use(express.json());
 
+app.use('/', authRouter);
 app.use('/products', productRouter);
 app.use('/language', languageRouter);
 app.use('/user', userRouter);
+
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

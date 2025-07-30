@@ -1,13 +1,13 @@
-import express from 'express';
+import { Router } from 'express';
 import * as userController from '../resources/userType/user/user.controller';
+import isAdmin from '../middlewares/isAdmin';
 
-const app = express();
-app.use(express.json());
+const router = Router();
 
-app.get('/', userController.index);
-app.post('/', userController.create);
-app.get('/:id', userController.read);
-app.put('/:id', userController.update);
-app.delete('/:id', userController.remove);
+router.get('/', userController.index);
+router.post('/', userController.create);
+router.get('/:id', userController.read);
+router.put('/:id', userController.update);
+router.delete('/:id', userController.remove);
 
-export default app;
+export default router;
