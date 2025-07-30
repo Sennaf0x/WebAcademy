@@ -35,3 +35,11 @@ model UserType {
  label String @db.VarChar(10)
  User User[]
 }
+
+model Order {
+    id        String   @id @default(cuid())
+    userId    String
+    total     Float
+    createdAt DateTime @default(now())
+    items     Json
+}

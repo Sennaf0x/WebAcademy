@@ -7,6 +7,7 @@ import session from 'express-session';
 import { v4 as uuidv4 } from 'uuid';
 import userRouter from './router/user.router';
 import authRouter from './resources/authentication/auth.router';
+import purchaseRouter from './router/purchase.router';
 
 declare module "express-session" {
  interface SessionData {
@@ -33,6 +34,7 @@ app.use('/', authRouter);
 app.use('/products', productRouter);
 app.use('/language', languageRouter);
 app.use('/user', userRouter);
+app.use('/order', purchaseRouter);
 
 
 
