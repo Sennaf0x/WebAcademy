@@ -1,0 +1,41 @@
+version: '3.0'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    ports:
+      - "3308:3308"
+    volumes:
+      - mysql_data:/var/lib/mysql            
+      - ./mysql-config:/etc/mysql/conf.d     
+    networks:
+      - rede_webacademy
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: rootpassword
+    ports:
+      - "8080:80"          
+    networks:
+      - rede_webacademy
+    depends_on:
+      - mysql
+
+networks:
+  rede_webacademy:
+    driver: bridge
+
+volumes:
+  mysql_data:
