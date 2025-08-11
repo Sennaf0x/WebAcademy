@@ -49,7 +49,7 @@ class Logger {
      * o padrão de projetos Singleton.
      */
     private constructor(){
-        this.diretorioLog = join(process.cwd(), "/log");
+        this.diretorioLog = join(process.cwd(), "./log");
         this.deveEscreverEmArquivo = (JSON.parse(process.env.ESCREVER_LOG_ARQUIVO as string)) as boolean;
 
         if(this.deveEscreverEmArquivo){
